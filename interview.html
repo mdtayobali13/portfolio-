@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" class="notranslate" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flutter &amp; Dart Interview Vault | MD. TAYOB ALI</title>
   <meta name="description" content="৭৬৪+ Flutter & Dart ইন্টারভিউ প্রশ্নোত্তর — ১ লাইনে উত্তর, সহজে মনে রাখার টেকনিক ও ক্লিন কোড এক্সাম্পল।">
   <meta name="author" content="MD. Tayob Ali">
+
+  <!-- Suppress Chrome Google Translate Bar ("বিকল্প" / "এতে অনূদিত") -->
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="notranslate">
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23123C3A'/><path d='M9 16L16 9L23 16L16 23Z' fill='%23C6A15B'/><path d='M16 13L19 16L16 19L13 16Z' fill='%23FAF9F6'/></svg>">
@@ -20,7 +24,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.2.0">
   <style>
     /* Dedicated Fullscreen Page Header & Nav */
     .vault-page-header {
@@ -129,119 +133,62 @@
       }
     }
 
-    /* Prominent Hero Language Bar */
-    .vault-hero-lang-bar {
-      margin-top: 1.8rem;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      background: #FFFFFF;
-      padding: 0.9rem 1.6rem;
-      border-radius: var(--radius-full);
-      border: 1.5px solid #C6A15B;
-      box-shadow: 0 8px 24px rgba(18, 60, 58, 0.08);
-    }
-
-    .hero-lang-prompt {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-lang-pill-group {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--color-bg);
-      padding: 0.3rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--color-border);
-    }
-
-    .hero-lang-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.5rem 1.25rem;
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      font-weight: 700;
-      border: none;
-      border-radius: var(--radius-full);
-      background: transparent;
-      color: var(--color-text-secondary);
-      cursor: pointer;
-      transition: all var(--transition-snappy);
-    }
-
-    .hero-lang-btn:hover {
-      color: var(--color-primary);
-    }
-
-    .hero-lang-btn.active {
-      background: var(--color-primary);
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(18, 60, 58, 0.25);
-    }
-
-    /* Floating Language Button at Bottom-Right */
-    .floating-lang-toggle {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 9999;
-    }
-
-    .btn-floating-lang {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, #123C3A, #1F5C56);
-      color: #FFFFFF;
-      border: 2px solid #C6A15B;
-      padding: 0.75rem 1.4rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-heading);
-      font-size: 0.92rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 28px rgba(18, 60, 58, 0.35);
-      transition: all var(--transition-snappy);
-    }
-
-    .btn-floating-lang:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 14px 34px rgba(18, 60, 58, 0.45);
-      background: linear-gradient(135deg, #1F5C56, #123C3A);
-    }
-
+    /* Single Clean Language Toggle in Controls Bar */
     .btn-vault-action.btn-translate-toggle {
-      background: linear-gradient(135deg, #123C3A, #1F5C56) !important;
-      border: 1.5px solid #C6A15B !important;
-      color: #FFFFFF !important;
+      background: var(--color-card) !important;
+      border: 1.5px solid var(--color-border) !important;
+      color: var(--color-primary) !important;
       font-weight: 700 !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 0.5rem !important;
-      box-shadow: 0 3px 10px rgba(18, 60, 58, 0.15) !important;
-    }
-
-    .vault-lang-toggle-btn {
       display: inline-flex !important;
       align-items: center !important;
       gap: 0.45rem !important;
-      background: #FFFFFF !important;
-      border: 1.5px solid #C6A15B !important;
-      padding: 0.45rem 1rem !important;
-      border-radius: var(--radius-full) !important;
-      font-family: var(--font-heading) !important;
-      font-size: 0.84rem !important;
-      font-weight: 700 !important;
-      color: var(--color-primary) !important;
-      cursor: pointer !important;
-      box-shadow: 0 2px 8px rgba(198, 161, 91, 0.2) !important;
+      transition: all var(--transition-snappy) !important;
+    }
+
+    .btn-vault-action.btn-translate-toggle:hover {
+      background: var(--color-primary) !important;
+      border-color: var(--color-primary) !important;
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
+    }
+
+    .btn-vault-action.btn-translate-toggle.active {
+      background: linear-gradient(135deg, #123C3A, #1F5C56) !important;
+      border-color: #C6A15B !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Complete Google Translate Banner & Toolbar Suppression */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    iframe.goog-te-banner-frame,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    .goog-te-menu-frame,
+    .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+    .VIpgJd-ZVi9od-ORHb-OEVmcd,
+    .goog-tooltip,
+    .goog-tooltip:hover {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      top: -9999px !important;
+    }
+
+    body {
+      top: 0px !important;
+      position: static !important;
+    }
+
+    #google_translate_element {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
     }
   </style>
 </head>
@@ -273,10 +220,6 @@
       </div>
 
       <div class="vault-header-actions">
-        <button id="headerLangToggle" class="vault-lang-toggle-btn" aria-label="Toggle Language" title="English / বাংলা সুইচ করুন">
-          <span class="lang-flag" id="headerLangFlag">🇬🇧</span>
-          <span class="lang-text" id="headerLangText">English</span>
-        </button>
         <div class="vault-header-stat" id="vaultHeaderStat">
           <span class="badge-role">
             <span class="gold-pip"></span>
@@ -296,19 +239,6 @@
         <p class="section-subtitle">
           ১ লাইনে মূল প্রশ্ন • এক নজরে সারসংক্ষেপ • সহজে মনে রাখার টেকনিক • ক্লিন কোড এক্সাম্পল সহ সম্পূর্ণ ইন্টারভিউ গাইড।
         </p>
-
-        <!-- Big, Unmissable Language Switcher Bar in Hero -->
-        <div class="vault-hero-lang-bar">
-          <span class="hero-lang-prompt">🌐 ভাষা নির্বাচন করুন / Select Language:</span>
-          <div class="hero-lang-pill-group">
-            <button type="button" class="hero-lang-btn active" id="heroBtnBn" data-lang="bn">
-              <span class="flag">🇧🇩</span> বাংলা (Default)
-            </button>
-            <button type="button" class="hero-lang-btn" id="heroBtnEn" data-lang="en">
-              <span class="flag">🇬🇧</span> English
-            </button>
-          </div>
-        </div>
       </div>
 
       <!-- Category Tabs -->
@@ -389,9 +319,9 @@
           </div>
 
           <div class="vault-toggle-actions">
-            <button id="btnTranslateToggle" class="btn-vault-action btn-translate-toggle" aria-label="Translate Questions" title="Switch English & Bengali">
+            <button id="btnTranslateToggle" class="btn-vault-action btn-translate-toggle" aria-label="Toggle Language" title="Switch English & Bengali">
               <span class="translate-icon">🌐</span>
-              <span id="translateBtnText">Translate to English</span>
+              <span id="translateBtnText">English</span>
             </button>
             <button id="toggleAllQuestionsBtn" class="btn-vault-action">
               <span id="toggleAllIcon">▾</span>
@@ -446,25 +376,18 @@
     </div>
   </footer>
 
-  <!-- Floating Quick Language Switcher Button (Bottom-Right) -->
-  <div class="floating-lang-toggle" id="floatingLangToggle">
-    <button type="button" class="btn-floating-lang" id="btnFloatingLang" aria-label="Toggle Language" title="Translate English / বাংলা">
-      <span class="fl-icon">🌐</span>
-      <span class="fl-text" id="floatingLangText">English</span>
-    </button>
-  </div>
-
   <!-- Google Website Translator Container -->
   <div id="google_translate_element" aria-hidden="true" style="display: none;"></div>
 
-  <script src="assets/data/interview-data.js?v=2.1.0"></script>
-  <script src="assets/js/interview.js?v=2.1.0"></script>
+  <script src="assets/data/interview-data.js?v=2.2.0"></script>
+  <script src="assets/js/interview.js?v=2.2.0"></script>
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'bn',
         includedLanguages: 'en,bn',
-        autoDisplay: false
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
   </script>
