@@ -3235,22 +3235,30 @@ img, svg {
 }
 
 .btn-vault-action.btn-translate-toggle {
-  background-color: var(--color-soft-accent);
-  border-color: rgba(18, 60, 58, 0.2);
-  color: var(--color-primary);
+  background: linear-gradient(135deg, #123C3A, #1F5C56);
+  border: 1.5px solid #C6A15B;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(18, 60, 58, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-vault-action.btn-translate-toggle:hover {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #1F5C56, #123C3A);
   color: #FFFFFF;
-  border-color: var(--color-primary);
+  border-color: #DFBA73;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(18, 60, 58, 0.28);
 }
 
 .btn-vault-action.btn-translate-toggle.active {
-  background-color: var(--color-primary);
-  color: #FFFFFF;
-  border-color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(18, 60, 58, 0.2);
+  background: linear-gradient(135deg, #C6A15B, #A8823B);
+  color: #123C3A;
+  border-color: #123C3A;
+  box-shadow: 0 4px 14px rgba(198, 161, 91, 0.35);
+  font-weight: 800;
 }
 
 .vault-header-actions {
@@ -3262,17 +3270,17 @@ img, svg {
 .vault-lang-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background-color: var(--color-card);
-  border: 1.5px solid var(--color-border);
-  padding: 0.45rem 0.95rem;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1.5px solid #C6A15B;
+  padding: 0.45rem 1.05rem;
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: var(--color-primary);
   cursor: pointer;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 3px 10px rgba(198, 161, 91, 0.18);
   transition: all var(--transition-snappy);
 }
 
@@ -3280,13 +3288,14 @@ img, svg {
   background-color: var(--color-primary);
   color: #FFFFFF;
   border-color: var(--color-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(18, 60, 58, 0.22);
 }
 
 .vault-lang-toggle-btn.lang-en {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #123C3A, #1F5C56);
   color: #FFFFFF;
-  border-color: var(--color-primary);
+  border-color: #C6A15B;
 }
 
 /* Hide Google Translate Default Banner & Frame Artifacts */
