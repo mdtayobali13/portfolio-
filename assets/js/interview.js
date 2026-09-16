@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const vaultHeaderCount = document.getElementById('vaultHeaderCount');
   const btnTranslateToggle = document.getElementById('btnTranslateToggle');
   const translateBtnText = document.getElementById('translateBtnText');
+  const heroBtnBn = document.getElementById('heroBtnBn');
+  const heroBtnEn = document.getElementById('heroBtnEn');
+  const btnFloatingLang = document.getElementById('btnFloatingLang');
+  const floatingLangText = document.getElementById('floatingLangText');
 
   // State Management
   let interviewData = window.INTERVIEW_DATA || null;
@@ -160,6 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btnTranslateToggle?.classList.remove('active');
       headerLangToggle?.classList.remove('lang-en');
     }
+
+    heroBtnBn?.classList.toggle('active', currentLang === 'bn');
+    heroBtnEn?.classList.toggle('active', currentLang === 'en');
+    if (floatingLangText) floatingLangText.textContent = currentLang === 'en' ? 'বাংলা' : 'English';
   };
 
   const setLanguage = (lang) => {
@@ -341,6 +349,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnTranslateToggle) {
     btnTranslateToggle.addEventListener('click', toggleLanguage);
+  }
+
+  if (heroBtnBn) {
+    heroBtnBn.addEventListener('click', () => setLanguage('bn'));
+  }
+
+  if (heroBtnEn) {
+    heroBtnEn.addEventListener('click', () => setLanguage('en'));
+  }
+
+  if (btnFloatingLang) {
+    btnFloatingLang.addEventListener('click', toggleLanguage);
   }
 
   // Event Delegation on List
