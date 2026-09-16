@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flutter &amp; Dart Interview Vault | MD. TAYOB ALI</title>
+  <meta name="description" content="৭৬৪+ Flutter & Dart ইন্টারভিউ প্রশ্নোত্তর — ১ লাইনে উত্তর, সহজে মনে রাখার টেকনিক ও ক্লিন কোড এক্সাম্পল।">
+  <meta name="author" content="MD. Tayob Ali">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23123C3A'/><path d='M9 16L16 9L23 16L16 23Z' fill='%23C6A15B'/><path d='M16 13L19 16L16 19L13 16Z' fill='%23FAF9F6'/></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Dedicated Fullscreen Page Header & Nav */
+    .vault-page-header {
+      background-color: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.9rem 0;
+    }
+
+    .vault-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn-back-portfolio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      background-color: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-subtle);
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-back-portfolio:hover {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      border-color: var(--color-primary);
+      transform: translateX(-3px);
+    }
+
+    .vault-brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .vault-hero-intro {
+      padding: 3.5rem 0 2rem;
+      text-align: center;
+    }
+
+    .vault-hero-intro .section-badge {
+      margin-bottom: 0.8rem;
+    }
+
+    .vault-hero-intro .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .vault-hero-intro .section-subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body class="vault-screen-body">
+
+  <!-- Background Ambient Glow -->
+  <div class="luxury-backdrop" aria-hidden="true">
+    <div class="ambient-shape shape-1"></div>
+    <div class="ambient-shape shape-2"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <!-- Dedicated Top Navigation -->
+  <header class="vault-page-header">
+    <div class="container vault-nav-inner">
+      <a href="index.html" class="btn-back-portfolio" title="Return to Main Portfolio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Back to Portfolio</span>
+      </a>
+
+      <div class="vault-brand-meta">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/images/profile.jpg" alt="MD. Tayob Ali" class="brand-avatar-img">
+          <div class="brand-meta">
+            <span class="brand-name">MD. TAYOB ALI</span>
+            <span class="brand-role">Flutter Developer</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="vault-header-stat">
+        <span class="badge-role">
+          <span class="gold-pip"></span>
+          ৭৬৪+ প্রশ্নোত্তর সংকলন
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="vault-main-content">
+    <div class="container">
+      <!-- Intro Hero Banner -->
+      <div class="vault-hero-intro">
+        <div class="section-badge">INTERVIEW CHEATSHEET &amp; KNOWLEDGE VAULT</div>
+        <h1 class="section-title">৭৬৪+ Flutter &amp; Dart ইন্টারভিউ প্রশ্নোত্তর</h1>
+        <p class="section-subtitle">
+          ১ লাইনে মূল প্রশ্ন • এক নজরে সারসংক্ষেপ • সহজে মনে রাখার টেকনিক • ক্লিন কোড এক্সাম্পল সহ সম্পূর্ণ ইন্টারভিউ গাইড।
+        </p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="vault-tabs-wrapper">
+        <div class="vault-tabs-scroll" id="vaultTabs">
+          <button class="vault-tab-btn active" data-cat="dart">
+            <span class="tab-emoji">🎯</span>
+            <span class="tab-label">Dart</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="oop">
+            <span class="tab-emoji">🧱</span>
+            <span class="tab-label">OOP</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="flutter">
+            <span class="tab-emoji">📱</span>
+            <span class="tab-label">Flutter</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="di">
+            <span class="tab-emoji">💉</span>
+            <span class="tab-label">Dependency Injection</span>
+            <span class="tab-badge">20</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="bloc">
+            <span class="tab-emoji">⚡</span>
+            <span class="tab-label">BLoC</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="riverpod">
+            <span class="tab-emoji">🌊</span>
+            <span class="tab-label">Riverpod</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="provider">
+            <span class="tab-emoji">🔄</span>
+            <span class="tab-label">Provider</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="getx">
+            <span class="tab-emoji">🚀</span>
+            <span class="tab-label">GetX</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="memory">
+            <span class="tab-emoji">🧠</span>
+            <span class="tab-label">Memory</span>
+            <span class="tab-badge">90</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="firebase">
+            <span class="tab-emoji">🔥</span>
+            <span class="tab-label">Firebase</span>
+            <span class="tab-badge">12</span>
+          </button>
+          <button class="vault-tab-btn" data-cat="version">
+            <span class="tab-emoji">📦</span>
+            <span class="tab-label">Version / Tools</span>
+            <span class="tab-badge">12</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter & Search Controls Bar -->
+      <div class="vault-controls-card">
+        <div class="vault-search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="vaultSearchInput" class="vault-search-input" placeholder="প্রশ্ন বা কিওয়ার্ড সার্চ করুন (যেমন: isolate, stream, bloc, di, riverpod, gc)...">
+          <button id="clearSearchBtn" class="clear-search-btn" style="display:none;" aria-label="Clear Search">&times;</button>
+        </div>
+
+        <div class="vault-controls-row">
+          <div class="level-filter-pills" id="levelFilterPills">
+            <button class="level-pill active" data-level="all">সকল লেভেল</button>
+            <button class="level-pill" data-level="basic">Basic</button>
+            <button class="level-pill" data-level="intermediate">Intermediate</button>
+            <button class="level-pill" data-level="advanced">Advanced</button>
+          </div>
+
+          <div class="vault-toggle-actions">
+            <button id="toggleAllQuestionsBtn" class="btn-vault-action">
+              <span id="toggleAllIcon">▾</span>
+              <span id="toggleAllText">Expand All</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Bar -->
+      <div class="vault-status-bar">
+        <div class="vault-status-info">
+          <h2 class="vault-active-cat-name" id="activeCategoryTitle">Dart Programming</h2>
+          <span class="vault-active-cat-sub" id="activeCategorySub">৯০টি প্রশ্ন ও উত্তর (৩০ Basic · ৩০ Intermediate · ৩০ Advanced)</span>
+        </div>
+        <div class="vault-result-count" id="vaultResultCount">Showing 90 questions</div>
+      </div>
+
+      <!-- Questions Grid -->
+      <div class="vault-questions-grid" id="vaultQuestionsList">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="vault-empty-state" id="vaultEmptyState" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>কোনো প্রশ্ন পাওয়া যায়নি</h3>
+        <p>অন্য কোনো কিওয়ার্ড বা টপিক দিয়ে সার্চ করে দেখুন।</p>
+        <button class="btn btn-secondary" id="resetSearchBtn">রিসেট ফিল্টার</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Clean Minimal Footer -->
+  <footer class="site-footer" style="margin-top: 5rem;">
+    <div class="container footer-bottom" style="border: none; padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p class="copyright">&copy; 2026 MD. Tayob Ali. Flutter Developer Portfolio &amp; Knowledge Vault.</p>
+      <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+        <a href="https://www.linkedin.com/in/md-tayob-ali" target="_blank" rel="noopener noreferrer" style="color: var(--color-gold); display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 500; text-decoration: none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/mdtayobali13" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-secondary); display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 500; text-decoration: none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="index.html" class="back-to-top">
+          <span>Back to Home</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data/interview-data.js"></script>
+  <script src="assets/js/interview.js"></script>
+</body>
+</html>

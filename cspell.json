@@ -1,0 +1,10 @@
+{
+  "version": "0.2",
+  "enabled": false,
+  "ignorePaths": [
+    "**/*"
+  ],
+  "ignoreRegExpList": [
+    "/[\\u0980-\\u09FF]+/g"
+  ]
+}
