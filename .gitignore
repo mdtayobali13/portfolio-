@@ -1,6 +1,8 @@
-.vscode/
 .DS_Store
 Thumbs.db
+temp_auto_push.bat
 *.log
 scratch/
 assets/icons/raw_cards/
+.gitignore
+branch_structure.json
