@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,6 +83,46 @@
       max-width: 680px;
       margin: 0 auto;
     }
+
+    @media (max-width: 768px) {
+      .vault-page-header {
+        padding: 0.75rem 0;
+      }
+      .vault-nav-inner {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+      }
+      .vault-hero-intro {
+        padding: 2.5rem 0 1.2rem;
+      }
+      .vault-hero-intro .section-title {
+        font-size: 1.95rem;
+      }
+      .vault-hero-intro .section-subtitle {
+        font-size: 0.92rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .vault-brand-meta .brand-role,
+      .vault-header-stat {
+        display: none;
+      }
+      .vault-hero-intro .section-title {
+        font-size: 1.7rem;
+      }
+      .btn-back-portfolio {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .vault-hero-intro .section-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body class="vault-screen-body">
@@ -112,11 +152,17 @@
         </a>
       </div>
 
-      <div class="vault-header-stat">
-        <span class="badge-role">
-          <span class="gold-pip"></span>
-          ৭৬৪+ প্রশ্নোত্তর সংকলন
-        </span>
+      <div class="vault-header-actions">
+        <button id="headerLangToggle" class="vault-lang-toggle-btn" aria-label="Toggle Language" title="English / বাংলা সুইচ করুন">
+          <span class="lang-flag" id="headerLangFlag">🇬🇧</span>
+          <span class="lang-text" id="headerLangText">English</span>
+        </button>
+        <div class="vault-header-stat" id="vaultHeaderStat">
+          <span class="badge-role">
+            <span class="gold-pip"></span>
+            <span id="vaultHeaderCount">৭৬৪+ প্রশ্নোত্তর সংকলন</span>
+          </span>
+        </div>
       </div>
     </div>
   </header>
@@ -210,6 +256,10 @@
           </div>
 
           <div class="vault-toggle-actions">
+            <button id="btnTranslateToggle" class="btn-vault-action btn-translate-toggle" aria-label="Translate Questions" title="Switch English & Bengali">
+              <span class="translate-icon">🌐</span>
+              <span id="translateBtnText">Translate to English</span>
+            </button>
             <button id="toggleAllQuestionsBtn" class="btn-vault-action">
               <span id="toggleAllIcon">▾</span>
               <span id="toggleAllText">Expand All</span>
@@ -263,7 +313,20 @@
     </div>
   </footer>
 
+  <!-- Google Website Translator Container -->
+  <div id="google_translate_element" aria-hidden="true" style="display: none;"></div>
+
   <script src="assets/data/interview-data.js"></script>
   <script src="assets/js/interview.js"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'bn',
+        includedLanguages: 'en,bn',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
