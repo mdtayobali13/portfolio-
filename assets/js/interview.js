@@ -18,16 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetSearchBtn = document.getElementById('resetSearchBtn');
 
   // Translation Elements
-  const headerLangToggle = document.getElementById('headerLangToggle');
-  const headerLangText = document.getElementById('headerLangText');
-  const headerLangFlag = document.getElementById('headerLangFlag');
   const vaultHeaderCount = document.getElementById('vaultHeaderCount');
   const btnTranslateToggle = document.getElementById('btnTranslateToggle');
   const translateBtnText = document.getElementById('translateBtnText');
-  const heroBtnBn = document.getElementById('heroBtnBn');
-  const heroBtnEn = document.getElementById('heroBtnEn');
-  const btnFloatingLang = document.getElementById('btnFloatingLang');
-  const floatingLangText = document.getElementById('floatingLangText');
 
   // State Management
   let interviewData = window.INTERVIEW_DATA || null;
@@ -36,6 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let searchQuery = '';
   let isAllExpanded = false;
   let currentLang = localStorage.getItem('vault_lang') || 'bn';
+
+  // Clear google translate cookie on initial load if user is in Bengali
+  if (currentLang === 'bn') {
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    const domain = window.location.hostname;
+    if (domain) {
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${domain}; path=/;`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${domain}; path=/;`;
+    }
+  }
 
   // Comprehensive UI Dictionaries
   const UI_TEXT = {
@@ -52,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       emptyTitle: 'কোনো প্রশ্ন পাওয়া যায়নি',
       emptyDesc: 'অন্য কোনো কিওয়ার্ড বা টপিক দিয়ে সার্চ করে দেখুন।',
       resetBtn: 'রিসেট ফিল্টার',
-      translateBtn: 'Translate to English',
-      headerLang: 'English',
-      headerFlag: '🇬🇧',
+      translateBtn: 'English',
       copied: 'Copied!'
     },
     en: {
@@ -70,9 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       emptyTitle: 'No questions found',
       emptyDesc: 'Try searching with another keyword or reset filters.',
       resetBtn: 'Reset Filters',
-      translateBtn: 'বাংলায় দেখুন',
-      headerLang: 'বাংলা',
-      headerFlag: '🇧🇩',
+      translateBtn: 'বাংলা',
       copied: 'Copied!'
     }
   };
@@ -101,9 +100,29 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   };
 
+  // Clear Google Translate Cookie
+  const clearGoogleTranslateCookies = () => {
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    const domain = window.location.hostname;
+    if (domain) {
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${domain}; path=/;`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${domain}; path=/;`;
+    }
+  };
+
   // Trigger Google Translate engine
   const applyGoogleTranslate = (lang) => {
-    const target = lang === 'en' ? 'en' : 'bn';
+    if (lang === 'bn') {
+      clearGoogleTranslateCookies();
+      const select = document.querySelector('.goog-te-combo');
+      if (select && select.value !== 'bn') {
+        select.value = 'bn';
+        select.dispatchEvent(new Event('change'));
+      }
+      return;
+    }
+
+    const target = 'en';
     const domain = window.location.hostname;
 
     // Set cookie for Google Translate
@@ -139,8 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dict = UI_TEXT[currentLang] || UI_TEXT.bn;
 
     if (vaultHeaderCount) vaultHeaderCount.textContent = dict.headerCount;
-    if (headerLangText) headerLangText.textContent = dict.headerLang;
-    if (headerLangFlag) headerLangFlag.textContent = dict.headerFlag;
     if (translateBtnText) translateBtnText.textContent = dict.translateBtn;
 
     const heroTitle = document.querySelector('.vault-hero-intro .section-title');
@@ -156,18 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (resetSearchBtn) resetSearchBtn.textContent = dict.resetBtn;
 
-    // Style active toggles
-    if (currentLang === 'en') {
-      btnTranslateToggle?.classList.add('active');
-      headerLangToggle?.classList.add('lang-en');
-    } else {
-      btnTranslateToggle?.classList.remove('active');
-      headerLangToggle?.classList.remove('lang-en');
-    }
-
-    heroBtnBn?.classList.toggle('active', currentLang === 'bn');
-    heroBtnEn?.classList.toggle('active', currentLang === 'en');
-    if (floatingLangText) floatingLangText.textContent = currentLang === 'en' ? 'বাংলা' : 'English';
+    // Single language button style
+    btnTranslateToggle?.classList.toggle('active', currentLang === 'en');
   };
 
   const setLanguage = (lang) => {
@@ -343,24 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(nextLang);
   };
 
-  if (headerLangToggle) {
-    headerLangToggle.addEventListener('click', toggleLanguage);
-  }
-
   if (btnTranslateToggle) {
     btnTranslateToggle.addEventListener('click', toggleLanguage);
-  }
-
-  if (heroBtnBn) {
-    heroBtnBn.addEventListener('click', () => setLanguage('bn'));
-  }
-
-  if (heroBtnEn) {
-    heroBtnEn.addEventListener('click', () => setLanguage('en'));
-  }
-
-  if (btnFloatingLang) {
-    btnFloatingLang.addEventListener('click', toggleLanguage);
   }
 
   // Event Delegation on List
